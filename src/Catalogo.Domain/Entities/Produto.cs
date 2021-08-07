@@ -29,6 +29,18 @@ namespace Catalogo.Domain.Entities
             Nome = nome;
         }
 
+        public void AlterarValor(decimal valor)
+        {
+            ValidarValor(valor);
+
+            Valor = valor;
+        }
+
+        public void AlterarEstoque(int estoque)
+        {
+            Estoque = estoque;
+        }
+
         private void ValidarNome(string nome)
         {
             if (string.IsNullOrEmpty(nome))
