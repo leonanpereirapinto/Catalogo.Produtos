@@ -15,7 +15,6 @@ namespace Catalogo.Domain.Entities
         public Produto(string nome, int estoque, decimal valor)
         {
             ValidarNome(nome);
-            ValidarEstoque(estoque);
             ValidarValor(valor);
 
             Nome = nome;
@@ -33,10 +32,10 @@ namespace Catalogo.Domain.Entities
 
         private void ValidarValor(decimal valor)
         {
-        }
-
-        private void ValidarEstoque(int estoque)
-        {
+            if (valor < 0)
+            {
+                throw new DomainException("O Valor não pode ser negativo");
+            }
         }
     }
 }

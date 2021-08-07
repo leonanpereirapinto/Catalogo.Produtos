@@ -31,6 +31,15 @@ namespace Catalogo.Domain.Tests
             Assert.Equal("O campo Nome é obrigatório", stringVaziaException.Message);
             Assert.Equal("O campo Nome é obrigatório", stringNullException.Message);
         }
+        
+        [Fact(DisplayName = "Deve lançar DomainException se Valor for negativo")]
+        [Trait("Categoria", "Catalogo.Produto")]
+        public void Produto_Constructor_DeveLancarDomainExceptionSeValorForNegativo()
+        {
+            var exception = Assert.Throws<DomainException>(() => CriarProdutoValido(valor: -1));
+            
+            Assert.Equal("O Valor não pode ser negativo", exception.Message);
+        }
 
         private Produto CriarProdutoValido(string nome = "Nome do Produto", int estoque = 10, decimal valor = 100)
         {
