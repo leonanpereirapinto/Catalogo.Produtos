@@ -1,6 +1,6 @@
 using System;
 
-namespace Catalogo.Domain.Exceptions
+namespace Catalogo.Core.Exceptions
 {
     public class DomainException : Exception
     {

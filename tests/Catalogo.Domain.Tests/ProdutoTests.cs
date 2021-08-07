@@ -1,5 +1,5 @@
-﻿using Catalogo.Domain.Entities;
-using Catalogo.Domain.Exceptions;
+﻿using Catalogo.Core.Exceptions;
+using Catalogo.Domain.Entities;
 using Xunit;
 
 namespace Catalogo.Domain.Tests

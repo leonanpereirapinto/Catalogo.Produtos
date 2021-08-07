@@ -1,4 +1,4 @@
-using Catalogo.Domain.Exceptions;
+using Catalogo.Core.Exceptions;
 
 namespace Catalogo.Domain.Entities
 {
