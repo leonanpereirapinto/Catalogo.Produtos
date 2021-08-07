@@ -11,7 +11,7 @@ namespace Catalogo.Domain.Models
 
         public decimal Valor { get; private set; }
         
-        protected Produto() { }
+        protected Produto() { } // EF Core
 
         public Produto(string nome, int estoque, decimal valor)
         {
@@ -54,7 +54,7 @@ namespace Catalogo.Domain.Models
         {
             if (valor < 0)
             {
-                throw new DomainException("O Valor não pode ser negativo");
+                throw new DomainException("O Valor do produto não pode ser negativo");
             }
         }
     }

@@ -38,7 +38,7 @@ namespace Catalogo.Domain.Tests
         {
             var exception = Assert.Throws<DomainException>(() => CriarProdutoValido(valor: -1));
             
-            Assert.Equal("O Valor não pode ser negativo", exception.Message);
+            Assert.Equal("O Valor do produto não pode ser negativo", exception.Message);
         }
 
         [Fact(DisplayName = "Deve alterar o Nome do produto se o Nome for válido")]
@@ -85,7 +85,7 @@ namespace Catalogo.Domain.Tests
             
             var exception = Assert.Throws<DomainException>(() => produto.AlterarValor(-1));
             
-            Assert.Equal("O Valor não pode ser negativo", exception.Message);
+            Assert.Equal("O Valor do produto não pode ser negativo", exception.Message);
         }
 
         [Fact(DisplayName = "Deve alterar o Estoque para a quantidade fornecida")]

@@ -5,16 +5,5 @@
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=32875c47_002D663b_002D4c67_002D8386_002D4690d8d65c70/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Criar produto ao receber informações válidas #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveCriarProdutoComInformacoesValidas&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveLancarDomainExceptionSeNomeForInvalido&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveLancarDomainExceptionSeValorForNegativo&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_MudarNome_DeveAlterarNomeDoProduto&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_MudarNome_DeveLancarDomainExceptionSeNomeForInvalido&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_AlterarNome_DeveAlterarValorDoProduto&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_AlterarValor_DeveLancarDomainExceptionSeValorForNegativo&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_AlterarNome_DeveLancarDomainExceptionSeNomeForInvalido&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_AlterarNome_DeveAlterarNomeDoProduto&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_AlterarEstoque_DeveAlterarEstoqueParaQuantidadeFornecida&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Project Location="/Users/leonanpereirapinto/Code/DotNet/Catalogo" Presentation="&amp;lt;Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
