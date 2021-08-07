@@ -41,6 +41,30 @@ namespace Catalogo.Domain.Tests
             Assert.Equal("O Valor não pode ser negativo", exception.Message);
         }
 
+        [Fact(DisplayName = "Deve alterar o Nome do produto se o Nome for válido")]
+        [Trait("Categoria", "Catalogo.Produto")]
+        public void Produto_AlterarNome_DeveAlterarNomeDoProduto()
+        {
+            var produto = CriarProdutoValido();
+
+            produto.AlterarNome("Alterado");
+
+            Assert.Equal("Alterado", produto.Nome);
+        }
+
+        [Fact(DisplayName = "AlterarNome deve lançar DomainException se Nome for inválido")]
+        [Trait("Categoria", "Catalogo.Produto")]
+        public void Produto_AlterarNome_DeveLancarDomainExceptionSeNomeForInvalido()
+        {
+            var produto = CriarProdutoValido();
+            
+            var stringVaziaException = Assert.Throws<DomainException>(() => produto.AlterarNome(""));
+            var stringNullException = Assert.Throws<DomainException>(() => produto.AlterarNome(null));
+            
+            Assert.Equal("O campo Nome é obrigatório", stringVaziaException.Message);
+            Assert.Equal("O campo Nome é obrigatório", stringNullException.Message);
+        }
+
         private Produto CriarProdutoValido(string nome = "Nome do Produto", int estoque = 10, decimal valor = 100)
         {
             return new Produto(nome, estoque, valor);

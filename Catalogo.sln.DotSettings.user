@@ -9,5 +9,7 @@
     &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveCriarProdutoComInformacoesValidas&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveLancarDomainExceptionSeNomeForInvalido&lt;/TestId&gt;
     &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveLancarDomainExceptionSeValorForNegativo&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_MudarNome_DeveAlterarNomeDoProduto&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_MudarNome_DeveLancarDomainExceptionSeNomeForInvalido&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

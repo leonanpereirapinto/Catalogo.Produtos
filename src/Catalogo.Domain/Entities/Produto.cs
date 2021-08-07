@@ -22,6 +22,13 @@ namespace Catalogo.Domain.Entities
             Valor = valor;
         }
 
+        public void AlterarNome(string nome)
+        {
+            ValidarNome(nome);
+
+            Nome = nome;
+        }
+
         private void ValidarNome(string nome)
         {
             if (string.IsNullOrEmpty(nome))
