@@ -1,8 +1,9 @@
+using Catalogo.Core.DomainObjects;
 using Catalogo.Core.Exceptions;
 
-namespace Catalogo.Domain.Entities
+namespace Catalogo.Domain.Models
 {
-    public class Produto
+    public class Produto : Entity
     {
         public string Nome { get; private set; }
 
