@@ -3,7 +3,7 @@ using Catalogo.Core.Exceptions;
 
 namespace Catalogo.Domain.Models
 {
-    public class Produto : Entity
+    public class Produto : Entity, IAggregateRoot
     {
         public string Nome { get; private set; }
 
