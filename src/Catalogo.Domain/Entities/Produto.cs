@@ -1,3 +1,5 @@
+using Catalogo.Domain.Exceptions;
+
 namespace Catalogo.Domain.Entities
 {
     public class Produto
@@ -23,6 +25,10 @@ namespace Catalogo.Domain.Entities
 
         private void ValidarNome(string nome)
         {
+            if (string.IsNullOrEmpty(nome))
+            {
+                throw new DomainException("O campo Nome é obrigatório");
+            }
         }
 
         private void ValidarValor(decimal valor)

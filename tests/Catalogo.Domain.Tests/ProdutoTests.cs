@@ -1,4 +1,5 @@
 ﻿using Catalogo.Domain.Entities;
+using Catalogo.Domain.Exceptions;
 using Xunit;
 
 namespace Catalogo.Domain.Tests
@@ -18,6 +19,17 @@ namespace Catalogo.Domain.Tests
             Assert.Equal(nome, produto.Nome);
             Assert.Equal(estoque, produto.Estoque);
             Assert.Equal(valor, produto.Valor);
+        }
+
+        [Fact(DisplayName = "Lançar DomainException se Nome for inválido")]
+        [Trait("Categoria", "Catalogo.Produto")]
+        public void Produto_Constructor_DeveLancarDomainExceptionSeNomeForInvalido()
+        {
+            var stringVaziaException = Assert.Throws<DomainException>(() => CriarProdutoValido(nome: ""));
+            var stringNullException = Assert.Throws<DomainException>(() => CriarProdutoValido(nome: null));
+            
+            Assert.Equal("O campo Nome é obrigatório", stringVaziaException.Message);
+            Assert.Equal("O campo Nome é obrigatório", stringNullException.Message);
         }
 
         private Produto CriarProdutoValido(string nome = "Nome do Produto", int estoque = 10, decimal valor = 100)
