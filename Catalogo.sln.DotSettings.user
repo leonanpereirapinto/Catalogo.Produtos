@@ -2,8 +2,14 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=09eee536_002D856b_002D4027_002Dacee_002Ddb9d22c00bcf/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Criar produto ao receber informações válidas" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
     &lt;TestId&gt;xUnit::DD4EFECC-97CE-4C84-BD9F-EF2BF222E201::net5.0::Catalogo.Domain.Tests.ProdutoTests.Produto_Constructor_DeveCriarProdutoComInformacoesValidas&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::9404D4D5-094E-4598-8B93-54C5925A5421::net5.0::Catalogo.WebApp.API.Tests.ProdutoServiceTests.ProdutoService_CriarProduto_DeveChamarInserirESaveChangesAsyncDoProdutoRepository&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=32875c47_002D663b_002D4c67_002D8386_002D4690d8d65c70/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Criar produto ao receber informações válidas #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=32875c47_002D663b_002D4c67_002D8386_002D4690d8d65c70/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="Criar produto ao receber informações válidas #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;Project Location="/Users/leonanpereirapinto/Code/DotNet/Catalogo" Presentation="&amp;lt;Tests&amp;gt;" /&gt;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b25c4b2b_002Dce48_002D48ed_002Dbf32_002D6e16193c7dc4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Deve chamar Inserir e SaveChangesAsync do ProdutoRepository" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
+  &lt;TestAncestor&gt;
+    &lt;TestId&gt;xUnit::9404D4D5-094E-4598-8B93-54C5925A5421::net5.0::Catalogo.WebApp.API.Tests.ProdutoAppServiceTests&lt;/TestId&gt;
+  &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
