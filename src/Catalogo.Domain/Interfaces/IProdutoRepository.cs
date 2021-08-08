@@ -9,6 +9,8 @@ namespace Catalogo.Domain.Interfaces
     {
         Task Inserir(Produto produto);
         Task<Produto> ObterPeloId(Guid produtoId);
+        Task<bool> ExisteProdutoComId(Guid produtoId);
         Task Atualizar(Produto produto);
+        Task Deletar(Guid produtoId);
     }
 }

@@ -55,9 +55,8 @@ namespace Catalogo.WebApp.API.Tests
             var valor = 999;
 
             var produtoViewModel = ObterProdutoViewModel(produtoId, nome, estoque, valor);
-            var antigoProduto = new Produto("Antigo", 10, 100) { Id = produtoId };
-            
-            _repositorioMock.Setup(r => r.ObterPeloId(produtoId)).ReturnsAsync(antigoProduto);
+
+            _repositorioMock.Setup(r => r.ExisteProdutoComId(produtoId)).ReturnsAsync(true);
 
             await _sut.AtualizarProduto(produtoViewModel);
 
@@ -85,12 +84,41 @@ namespace Catalogo.WebApp.API.Tests
         {
             var produtoId = Guid.NewGuid();
             var produtoViewModel = ObterProdutoViewModel(id: produtoId);
-            _repositorioMock.Setup(r => r.ObterPeloId(It.IsAny<Guid>())).ReturnsAsync((Produto) null);
+            _repositorioMock.Setup(r => r.ExisteProdutoComId(It.IsAny<Guid>())).ReturnsAsync(false);
 
             var (sucesso, mensagemErro) = await _sut.AtualizarProduto(produtoViewModel);
 
             Assert.False(sucesso);
             Assert.Equal($"Produto com o Id {produtoId} não foi encontrado", mensagemErro);
+        }
+
+        [Fact(DisplayName = "RemoverProduto deve retornar mensagem de erro se o produto não for encontrado")]
+        [Trait("Categoria", "Catalogo.Application.ProdutoService")]
+        public async Task ProdutoService_RemoverProduto_DeveRetornarUmaMensagemDeErroSeProdutoNaoForEncontrado()
+        {
+            var produtoId = Guid.NewGuid();
+            _repositorioMock.Setup(r => r.ExisteProdutoComId(produtoId)).ReturnsAsync(false);
+
+            var (sucesso, mensagemErro) = await _sut.RemoverProduto(produtoId);
+
+            Assert.False(sucesso);
+            Assert.Equal($"Produto com o Id {produtoId} não foi encontrado", mensagemErro);
+        }
+
+        [Fact(DisplayName = "RemoverProduto deve remover o produto e salvar as alterações")]
+        [Trait("Categoria", "Catalogo.Application.ProdutoService")]
+        public async Task ProdutoService_RemoverProduto_DeveRemoverProdutoESalvarAsAlteracoes()
+        {
+            var produtoId = Guid.NewGuid();
+            _repositorioMock.Setup(r => r.ExisteProdutoComId(produtoId)).ReturnsAsync(true);
+            _repositorioMock.Setup(r => r.SaveChangesAsync()).ReturnsAsync(true);
+
+            var (sucesso, mensagemErro) = await _sut.RemoverProduto(produtoId);
+
+            Assert.True(sucesso);
+            Assert.True(string.IsNullOrEmpty(mensagemErro));
+            _repositorioMock.Verify(i => i.Deletar(produtoId), Times.Once);
+            _repositorioMock.Verify(i => i.SaveChangesAsync(), Times.Once);
         }
 
         private IMapper GetMapper()

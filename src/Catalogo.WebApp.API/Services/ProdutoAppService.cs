@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using Catalogo.Domain.Interfaces;
@@ -35,17 +36,30 @@ namespace WebApp.API.Services
             }
 
             var produtoId = produtoViewModel.Id.Value;
-            var produtoExistente = await _produtoRepository.ObterPeloId(produtoId);
+            var existeProduto = await _produtoRepository.ExisteProdutoComId(produtoId);
 
-            if (produtoExistente == null)
+            if (!existeProduto)
             {
                 return (false, $"Produto com o Id {produtoId} não foi encontrado");
             }
-            
-            
+
             var produto = _mapper.Map<Produto>(produtoViewModel);
 
             await _produtoRepository.Atualizar(produto);
+
+            return (await _produtoRepository.SaveChangesAsync(), null);
+        }
+
+        public async Task<(bool sucesso, string mensagemErro)> RemoverProduto(Guid produtoId)
+        {
+            var existeProduto = await _produtoRepository.ExisteProdutoComId(produtoId);
+
+            if (!existeProduto)
+            {
+                return (false, $"Produto com o Id {produtoId} não foi encontrado");
+            }
+
+            await _produtoRepository.Deletar(produtoId);
 
             return (await _produtoRepository.SaveChangesAsync(), null);
         }
