@@ -9,7 +9,10 @@
   &lt;Project Location="/Users/leonanpereirapinto/Code/DotNet/Catalogo" Presentation="&amp;lt;Tests&amp;gt;" /&gt;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=b25c4b2b_002Dce48_002D48ed_002Dbf32_002D6e16193c7dc4/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="Deve chamar Inserir e SaveChangesAsync do ProdutoRepository" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
-  &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::9404D4D5-094E-4598-8B93-54C5925A5421::net5.0::Catalogo.WebApp.API.Tests.ProdutoAppServiceTests&lt;/TestId&gt;
-  &lt;/TestAncestor&gt;
+  &lt;Or&gt;
+    &lt;TestAncestor&gt;
+      &lt;TestId&gt;xUnit::9404D4D5-094E-4598-8B93-54C5925A5421::net5.0::Catalogo.WebApp.API.Tests.ProdutoAppServiceTests&lt;/TestId&gt;
+    &lt;/TestAncestor&gt;
+    &lt;Project Location="/Users/leonanpereirapinto/Code/DotNet/Catalogo" Presentation="&amp;lt;Tests&amp;gt;" /&gt;
+  &lt;/Or&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

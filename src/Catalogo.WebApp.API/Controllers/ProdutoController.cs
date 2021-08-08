@@ -16,6 +16,18 @@ namespace WebApp.API.Controllers
             _produtoAppService = produtoAppService;
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodos(ObterTodosViewModel obterTodosViewModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return CustomResponse();
+            }
+
+            return Ok(await _produtoAppService.ObterTodos(obterTodosViewModel));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Criar(CriarProdutoViewModel produtoViewModel)
         {
