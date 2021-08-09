@@ -112,14 +112,16 @@ namespace Catalogo.WebApp.API.Tests
         public async Task ProdutoAppService_RemoverProduto_DeveRemoverProdutoESalvarAsAlteracoes()
         {
             var produtoId = Guid.NewGuid();
-            _repositorioMock.Setup(r => r.ExisteProdutoComId(produtoId)).ReturnsAsync(true);
+            var produto = new Produto("Produto Teste", 10, 100) { Id = produtoId };
+
+            _repositorioMock.Setup(r => r.ObterPeloId(produtoId)).ReturnsAsync(produto);
             _repositorioMock.Setup(r => r.SaveChangesAsync()).ReturnsAsync(true);
 
             var (sucesso, mensagemErro) = await _sut.RemoverProduto(produtoId);
 
             Assert.True(sucesso);
             Assert.True(string.IsNullOrEmpty(mensagemErro));
-            _repositorioMock.Verify(i => i.Deletar(produtoId), Times.Once);
+            _repositorioMock.Verify(i => i.Deletar(produto), Times.Once);
             _repositorioMock.Verify(i => i.SaveChangesAsync(), Times.Once);
         }
         

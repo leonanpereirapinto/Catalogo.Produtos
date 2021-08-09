@@ -110,14 +110,14 @@ namespace WebApp.API.Services
 
         public async Task<(bool sucesso, string mensagemErro)> RemoverProduto(Guid produtoId)
         {
-            var existeProduto = await _produtoRepository.ExisteProdutoComId(produtoId);
+            var produtoExistente = await _produtoRepository.ObterPeloId(produtoId);
 
-            if (!existeProduto)
+            if (produtoExistente == null)
             {
                 return (false, $"Produto com o Id {produtoId} não foi encontrado");
             }
 
-            await _produtoRepository.Deletar(produtoId);
+            _produtoRepository.Deletar(produtoExistente);
 
             return (await _produtoRepository.SaveChangesAsync(), null);
         }

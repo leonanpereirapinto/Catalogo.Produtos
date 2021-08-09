@@ -10,9 +10,10 @@ namespace Catalogo.Domain.Interfaces
     public interface IProdutoRepository : IRepository<Produto>
     {
         Task<List<Produto>> ObterTodos(List<Guid> listaIdsConvertidos = null, List<string> listaNomes = null, OrdenarPor? ordenarPorEnum = null, Ordenacao? ordenacaoEnum = null);
+        Task<Produto> ObterPeloId(Guid produtoId);
         Task Inserir(Produto produto);
         Task<bool> ExisteProdutoComId(Guid produtoId);
         Task Atualizar(Produto produto);
-        Task Deletar(Guid produtoId);
+        void Deletar(Produto produto);
     }
 }
