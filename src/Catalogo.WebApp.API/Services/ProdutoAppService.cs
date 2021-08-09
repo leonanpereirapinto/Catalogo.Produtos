@@ -74,7 +74,9 @@ namespace WebApp.API.Services
 
             var produtos = await _produtoRepository.ObterTodos(listaIdsConvertidos, listaNomes, ordenarPorEnum, ordenacaoEnum);
 
-            return (_mapper.Map<List<ProdutoViewModel>>(produtos), null);
+            var produtoViewModels = _mapper.Map<List<ProdutoViewModel>>(produtos);
+
+            return (produtoViewModels, null);
         }
 
         public async Task<bool> CriarProduto(CriarProdutoViewModel criarProdutoViewModel)
@@ -94,16 +96,29 @@ namespace WebApp.API.Services
             }
 
             var produtoId = produtoViewModel.Id.Value;
-            var existeProduto = await _produtoRepository.ExisteProdutoComId(produtoId);
+            var produtoExistente = await _produtoRepository.ObterPeloId(produtoId);
 
-            if (!existeProduto)
+            if (produtoExistente == null)
             {
                 return (false, $"Produto com o Id {produtoId} não foi encontrado");
             }
 
-            var produto = _mapper.Map<Produto>(produtoViewModel);
+            if (!string.IsNullOrEmpty(produtoViewModel.Nome))
+            {
+                produtoExistente.AlterarNome(produtoViewModel.Nome);
+            }
 
-            await _produtoRepository.Atualizar(produto);
+            if (produtoViewModel.Estoque.HasValue)
+            {
+                produtoExistente.AlterarEstoque(produtoViewModel.Estoque.Value);
+            }
+
+            if (produtoViewModel.Valor.HasValue)
+            {
+                produtoExistente.AlterarValor(produtoViewModel.Valor.Value);
+            }
+
+            _produtoRepository.Atualizar(produtoExistente);
 
             return (await _produtoRepository.SaveChangesAsync(), null);
         }

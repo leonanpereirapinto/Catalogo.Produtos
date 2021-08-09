@@ -7,6 +7,7 @@ using WebApp.API.ViewModels;
 
 namespace WebApp.API.Controllers
 {
+    [Route("produtos")]
     public class ProdutoController : ApiController
     {
         private IProdutoAppService _produtoAppService;
@@ -16,7 +17,6 @@ namespace WebApp.API.Controllers
             _produtoAppService = produtoAppService;
         }
 
-
         [HttpGet]
         public async Task<IActionResult> ObterTodos(ObterTodosViewModel obterTodosViewModel)
         {
@@ -24,8 +24,15 @@ namespace WebApp.API.Controllers
             {
                 return CustomResponse();
             }
+            
+            var (viewModels, mensagemErro) = await _produtoAppService.ObterTodos(obterTodosViewModel);
 
-            return Ok(await _produtoAppService.ObterTodos(obterTodosViewModel));
+            if (!string.IsNullOrEmpty(mensagemErro))
+            {
+                return BadRequest(mensagemErro);
+            }
+
+            return Ok(viewModels);
         }
 
         [HttpPost]
@@ -45,6 +52,7 @@ namespace WebApp.API.Controllers
 
             return Ok();
         }
+
         [HttpPut]
         public async Task<IActionResult> Atualizar(Guid id, ProdutoViewModel produtoViewModel)
         {
@@ -68,7 +76,6 @@ namespace WebApp.API.Controllers
             }
 
             return BadRequest(mensagemErro);
-
         }
     }
 }

@@ -9,7 +9,7 @@ namespace WebApp.API.AutoMapper
         public ViewModelToDomainMappingProfile()
         {
             CreateMap<ProdutoViewModel, Produto>()
-                .ConstructUsing(p => new Produto(p.Nome, p.Estoque, p.Valor)
+                .ConstructUsing(p => new Produto(p.Nome, p.Estoque.Value, p.Valor.Value)
                 {
                     Id = p.Id
                 });

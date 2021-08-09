@@ -13,7 +13,7 @@ namespace Catalogo.Domain.Interfaces
         Task<Produto> ObterPeloId(Guid produtoId);
         Task Inserir(Produto produto);
         Task<bool> ExisteProdutoComId(Guid produtoId);
-        Task Atualizar(Produto produto);
+        void Atualizar(Produto produto);
         void Deletar(Produto produto);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Catalogo.Data.Context;
 using Catalogo.Domain.Enums;
@@ -18,10 +19,35 @@ namespace Catalogo.Data.Repositories
             _context = dbContext;
         }
 
-        public async Task<List<Produto>> ObterTodos(List<Guid> listaIdsConvertidos = null, List<string> listaNomes = null, OrdenarPor? ordenarPorEnum = null,
-            Ordenacao? ordenacaoEnum = null)
+        public async Task<List<Produto>> ObterTodos(List<Guid> listaIdsConvertidos = null, List<string> listaNomes = null, 
+            OrdenarPor? ordenarPorEnum = null, Ordenacao? ordenacaoEnum = null)
         {
-            return await _context.Produtos.AsNoTracking().ToListAsync();
+            var query = _context.Produtos.AsNoTracking();
+            
+            if (ordenarPorEnum.HasValue && ordenacaoEnum.HasValue)
+            {
+                query = (ordenarPorEnum.Value, ordenacaoEnum.Value) switch
+                {
+                    (OrdenarPor.Nome, Ordenacao.Asc) => query.OrderBy(p => p.Nome),
+                    (OrdenarPor.Nome, Ordenacao.Desc) => query.OrderByDescending(p => p.Nome),
+                    (OrdenarPor.Estoque, Ordenacao.Asc) => query.OrderBy(p => p.Estoque),
+                    (OrdenarPor.Estoque, Ordenacao.Desc) => query.OrderByDescending(p => p.Estoque),
+                    (OrdenarPor.Valor, Ordenacao.Asc) => query.OrderBy(p => p.Valor),
+                    (OrdenarPor.Valor, Ordenacao.Desc) => query.OrderByDescending(p => p.Valor),
+                };
+            }
+
+            if (listaIdsConvertidos?.Any() == true)
+            {
+                query = query.Where(p => listaIdsConvertidos.Contains(p.Id.Value));
+            }
+
+            if (listaNomes?.Any() == true)
+            {
+                query = query.Where(p => listaNomes.Contains(p.Nome));
+            }
+
+            return await query.ToListAsync();
         }
 
         public async Task<Produto> ObterPeloId(Guid produtoId)
@@ -39,9 +65,9 @@ namespace Catalogo.Data.Repositories
             return await _context.Produtos.AsNoTracking().AnyAsync(p => p.Id == produtoId);
         }
 
-        public Task Atualizar(Produto produto)
+        public void Atualizar(Produto produto)
         {
-            throw new NotImplementedException();
+            _context.Produtos.Update(produto);
         }
 
         public void Deletar(Produto produto)
